@@ -8,3 +8,5 @@ configMapGenerator:
     literals:
       - ENV=sample-2
     behavior: replace
+
+nameSuffix: "-2"
