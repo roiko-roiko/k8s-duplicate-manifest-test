@@ -9,4 +9,19 @@ configMapGenerator:
       - ENV=sample-2
     behavior: replace
 
+replacements:
+  - source:
+      kind: ConfigMap
+      name: env-name
+      fieldPath: data.ENV
+    targets:
+      - select:
+          kind: Deployment
+          name: sample
+        fieldPaths:
+          - spec.template.spec.containers.0.image
+        options:
+          delimiter: ":"
+          index: 1
+
 nameSuffix: "-2"

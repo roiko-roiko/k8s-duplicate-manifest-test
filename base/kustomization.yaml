@@ -7,19 +7,3 @@ configMapGenerator:
   - name: env-name
     literals:
       - ENV=lab-env
-      
-images:
-- name: sample
-  newTag: $(ENV)
-
-vars:
-  - name: ENV
-    objref:
-      name: env-name
-      kind: ConfigMap
-      apiVersion: v1
-    fieldref:
-      fieldpath: data.ENV
-
-configurations:
-  - varreference.yaml
